@@ -1,5 +1,9 @@
-from flask import render_template
+from flask import render_template, request
 from . import home
+
+@home.route("/test")
+def test():
+    return "flask route works"
 
 
 @home.route("/")
@@ -7,7 +11,8 @@ def homepage():
     """
     Render the homepage template on the / route
     """
-    return render_template("page/home/index.html", title="Welcome")
+    text = request.args.get('text', '')
+    return render_template("page/home/index.html", title="Welcome", text=text)
 
 
 @home.route("/dashboard")

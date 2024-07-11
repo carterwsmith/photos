@@ -66,7 +66,7 @@ const killPythonSubprocesses = (main_pid) => {
   });
 };
 
-const createMainWindow = () => {
+const createMainWindow = async () => {
   // Create the browser mainWindow
   mainWindow = new BrowserWindow({
     width: 800,
@@ -80,8 +80,18 @@ const createMainWindow = () => {
     resizeable: true,
   });
 
+  // console.log("fetching")
+
+  let response = await fetch("http://localhost:4040/test");
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+  let fetched = await response.text();
+
+  // console.log("fetched", fetched)
+
   // Load the index page
-  mainWindow.loadURL("http://localhost:4040/");
+  mainWindow.loadURL("http://localhost:4040/?text=" + fetched);
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools();
