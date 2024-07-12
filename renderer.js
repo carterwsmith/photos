@@ -78,6 +78,7 @@ const createMainWindow = async () => {
     // darkTheme: true,
     // frame: false,
     resizeable: true,
+    title: "Grab My Photos",
   });
 
   // console.log("fetching")

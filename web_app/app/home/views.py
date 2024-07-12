@@ -1,9 +1,11 @@
 from flask import render_template, request
 from . import home
 
+from .api import drives_json
+
 @home.route("/test")
 def test():
-    return "flask route works"
+    return drives_json()
 
 
 @home.route("/")
