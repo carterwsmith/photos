@@ -1,11 +1,11 @@
-from flask import render_template, request
+from flask import jsonify, render_template, request
 from . import home
 
-from .api import drives_json
+from .api import connected_drives
 
-@home.route("/test")
-def test():
-    return drives_json()
+@home.route("/drives")
+def drives():
+    return jsonify(connected_drives())
 
 
 @home.route("/")

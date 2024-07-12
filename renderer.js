@@ -83,7 +83,7 @@ const createMainWindow = async () => {
 
   // console.log("fetching")
 
-  let response = await fetch("http://localhost:4040/test");
+  let response = await fetch("http://localhost:4040/drives");
   if (!response.ok) {
     throw new Error("HTTP error " + response.status);
   }
